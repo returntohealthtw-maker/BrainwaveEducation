@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { generateNeuroImage } from '../services/imageService';
+import AIFutureVisual from "../src/components/AIFutureVisual";
+
 
 interface AIVisualProps {
   prompt: string;
@@ -43,13 +45,10 @@ const AIVisual: React.FC<AIVisualProps> = ({ prompt, alt, className = "", aspect
           </span>
         </div>
       ) : (
-        <img 
-          src={imageUrl || ""} 
-          alt={alt} 
-          className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
-          onLoad={(e) => (e.currentTarget.style.opacity = "1")}
-          style={{ opacity: 0, transition: 'opacity 1s ease-in-out' }}
-        />
+        <div className="visual-box">
+          <AIFutureVisual />
+        </div>
+
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/40 to-transparent pointer-events-none"></div>
     </div>

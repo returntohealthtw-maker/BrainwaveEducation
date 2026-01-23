@@ -1,5 +1,6 @@
 
 import React from 'react';
+import AIFutureVisual from "../src/components/AIFutureVisual";
 
 const Header: React.FC = () => {
   return (
@@ -36,7 +37,10 @@ const Header: React.FC = () => {
               <div className="text-[9px] text-slate-500 uppercase tracking-tighter">Neuro Status: Optimal</div>
             </div>
             <div className="w-10 h-10 rounded-full bg-slate-800 border border-white/10 overflow-hidden hover:ring-2 ring-blue-500/50 transition-all cursor-pointer shadow-xl">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=neuro" alt="Profile" />
+              <div className="visual-box">
+                <AIFutureVisual />
+              </div>
+
             </div>
           </div>
         </div>
