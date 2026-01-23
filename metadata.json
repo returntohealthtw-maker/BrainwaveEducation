@@ -1,0 +1,7 @@
+{
+  "name": "Brainwave Education Pro",
+  "description": "An advanced neuro-educational platform for exploring brainwave patterns, cognitive optimization, and AI-guided meditation using real-time frequency visualizations.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
