@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Visualizer from './components/Visualizer';
 import ChatInterface from './components/ChatInterface';
-import AIVisual from './components/AIVisual';
 import { BRAINWAVE_MAP } from './constants';
 import { BrainwaveType } from './types';
 
@@ -32,10 +31,10 @@ const App: React.FC = () => {
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0 opacity-40">
-          <AIVisual 
-            prompt="Abstract fluid neon neural waves flowing across a deep space, cinematic light beams, high technology, no text" 
+          <img
+            src="/images/hero.png"
             alt="Hero Background"
-            className="w-full h-full rounded-none border-none scale-110 blur-[1px]"
+            className="w-full h-full object-cover rounded-none border-none scale-110 blur-[1px]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617]"></div>
         </div>
@@ -71,15 +70,15 @@ const App: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { prompt: 'A silhouette with two conflicting minds, internal struggle, blue and red neon neurons, no text', title: '自我矛盾', desc: '內在意識與潛意識頻率不一，導致行動力與願景脫鉤，陷入持續的自我懷疑。' },
-              { prompt: 'Two human silhouettes facing opposite directions with electrical lightning between them, relationship tension, no labels', title: '關係對立', desc: '與伴侶或夥伴的腦波無法「共振」，形成追逃循環，交流淪為無效的雜訊。' },
-              { prompt: 'Exploding neural patterns, chaotic red waves, emotional storm, no words', title: '情緒失控', desc: '杏仁核過度活躍，Beta 波失控暴衝，壓力系統無法關閉，引發焦慮或崩潰。' },
-              { prompt: 'A person standing at a foggy crossroad, blurry neon horizon, feeling lost and uncertain, cinematic 3D', title: '前途茫茫', desc: '看不清未來方向，大腦決策區 Alpha 波過低，導致目標感喪失與長期迷航。' },
-              { prompt: 'Chess pieces on a brain-like board, wrong placement, human resource metaphor, 3D render', title: '用人不當', desc: '企業主與員工頻率錯位，無法將對的人放在對的位置，造成人才損耗與內耗。' },
-              { prompt: 'A severed glowing network cable, disconnected energy, digital glitch art, no text', title: '客戶斷連', desc: '商業能量無法共鳴，無法精準觸達客戶潛意識需求，導致訂單流失與信任崩解。' }
+              { image: '/images/conflicting-minds.png', title: '自我矛盾', desc: '內在意識與潛意識頻率不一，導致行動力與願景脫鉤，陷入持續的自我懷疑。' },
+              { image: '/images/relationship-tension.png', title: '關係對立', desc: '與伴侶或夥伴的腦波無法「共振」，形成追逃循環，交流淪為無效的雜訊。' },
+              { image: '/images/emotional-storm.png', title: '情緒失控', desc: '杏仁核過度活躍，Beta 波失控暴衝，壓力系統無法關閉，引發焦慮或崩潰。' },
+              { image: '/images/foggy-crossroad.png', title: '前途茫茫', desc: '看不清未來方向，大腦決策區 Alpha 波過低，導致目標感喪失與長期迷航。' },
+              { image: '/images/chess-pieces.png', title: '用人不當', desc: '企業主與員工頻率錯位，無法將對的人放在對的位置，造成人才損耗與內耗。' },
+              { image: '/images/network-cable.png', title: '客戶斷連', desc: '商業能量無法共鳴，無法精準觸達客戶潛意識需求，導致訂單流失與信任崩解。' }
             ].map((item, i) => (
               <div key={i} className="group glass p-2 rounded-[48px] border border-white/5 hover:border-blue-500/30 transition-all duration-700">
-                <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="4:3" className="mb-8" />
+                <img src={item.image} alt={item.title} className="mb-8 w-full aspect-[4/3] object-cover rounded-[40px]" loading="lazy" />
                 <div className="p-8 pt-0">
                   <h4 className="text-3xl font-black mb-4 group-hover:text-blue-400 transition-colors">{item.title}</h4>
                   <p className="text-slate-400 leading-relaxed text-lg font-light">{item.desc}</p>
@@ -98,12 +97,7 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
             {/* Step 1: Acquisition */}
             <div className="group glass p-8 rounded-[48px] border border-blue-500/20 flex flex-col items-center text-center">
-              <AIVisual 
-                prompt="3D high-tech headset capturing blue electrical brainwave signals from a human forehead, medical precision, neon highlights, no text" 
-                alt="Signal Acquisition" 
-                aspectRatio="1:1"
-                className="mb-8 w-full rounded-[40px]"
-              />
+              <img src="/images/headset-capturing.png" alt="Signal Acquisition" className="mb-8 w-full rounded-[40px] aspect-square object-cover" loading="lazy" />
               <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white font-black mb-6">01</div>
               <h4 className="text-2xl font-black mb-4 text-white uppercase tracking-tight">原始訊號採集</h4>
               <p className="text-slate-400 text-sm leading-relaxed">
@@ -116,12 +110,7 @@ const App: React.FC = () => {
               <div className="hidden lg:block absolute -left-6 top-1/2 -translate-y-1/2 z-10">
                 <i className="fas fa-chevron-right text-blue-500/30 text-4xl animate-pulse"></i>
               </div>
-              <AIVisual 
-                prompt="Abstract 3D glowing mathematical gears and neural nodes filtering data particles, complex algorithmic processing visualization, violet and cyan theme, no text" 
-                alt="Proprietary Processing" 
-                aspectRatio="1:1"
-                className="mb-8 w-full rounded-[40px]"
-              />
+              <img src="/images/gears-neural-nodes.png" alt="Proprietary Processing" className="mb-8 w-full rounded-[40px] aspect-square object-cover" loading="lazy" />
               <div className="w-12 h-12 rounded-2xl bg-purple-600 flex items-center justify-center text-white font-black mb-6">02</div>
               <h4 className="text-2xl font-black mb-4 text-white uppercase tracking-tight">專利演算法處理</h4>
               <p className="text-slate-400 text-sm leading-relaxed">
@@ -134,12 +123,7 @@ const App: React.FC = () => {
               <div className="hidden lg:block absolute -left-6 top-1/2 -translate-y-1/2 z-10">
                 <i className="fas fa-chevron-right text-purple-500/30 text-4xl animate-pulse"></i>
               </div>
-              <AIVisual 
-                prompt="Futuristic holographic dashboard showing 3D radar charts, human body health metrics, cognitive performance levels, glowing emerald UI, no text" 
-                alt="Analysis Results" 
-                aspectRatio="1:1"
-                className="mb-8 w-full rounded-[40px]"
-              />
+              <img src="/images/dashboard-showing.png" alt="Analysis Results" className="mb-8 w-full rounded-[40px] aspect-square object-cover" loading="lazy" />
               <div className="w-12 h-12 rounded-2xl bg-emerald-600 flex items-center justify-center text-white font-black mb-6">03</div>
               <h4 className="text-2xl font-black mb-4 text-white uppercase tracking-tight">全人分析結果</h4>
               <p className="text-slate-400 text-sm leading-relaxed">
@@ -186,12 +170,12 @@ const App: React.FC = () => {
                 <i className="fas fa-globe-americas"></i> 當前世界的腦波檢測
               </h4>
               {[
-                { prompt: "Cold hospital room with old EEG monitors, sterile medical environment, monochrome lighting, no text", title: "侷限於醫院臨床", desc: "大多僅用於診斷睡眠障礙、癲癇或阿茲海默症，門檻極高。" },
-                { prompt: "Abstract academic research scene with piles of papers and 2D charts, complex and boring data, no text", title: "學術化的生澀報告", desc: "數據深奧難懂，僅用於科研或藥物測試，無法對接日常生活應用。" },
-                { prompt: "Staring at a mountain of gold coins with a wall in front, expensive and inaccessible concept, no text", title: "昂貴且高不可攀", desc: "高昂的檢測費用與專業需求，讓一般大眾難以接觸腦科學的益處。" }
+                { image: "/images/headset-capturing.png", title: "侷限於醫院臨床", desc: "大多僅用於診斷睡眠障礙、癲癇或阿茲海默症，門檻極高。" },
+                { image: "/images/gears-neural-nodes.png", title: "學術化的生澀報告", desc: "數據深奧難懂，僅用於科研或藥物測試，無法對接日常生活應用。" },
+                { image: "/images/golden-key.png", title: "昂貴且高不可攀", desc: "高昂的檢測費用與專業需求，讓一般大眾難以接觸腦科學的益處。" }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-8 items-center glass p-6 rounded-[32px] border border-white/5 group hover:bg-white/5 transition-all">
-                  <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="1:1" className="w-32 h-32 rounded-2xl grayscale group-hover:grayscale-0 transition-all" />
+                  <img src={item.image} alt={item.title} className="w-32 h-32 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all" loading="lazy" />
                   <div>
                     <h5 className="text-white font-black text-lg mb-2">{item.title}</h5>
                     <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
@@ -206,13 +190,13 @@ const App: React.FC = () => {
                 <i className="fas fa-bolt"></i> 而我們可以為你做到什麼
               </h4>
               {[
-                { prompt: "A glowing 3D child with sparkles around the head, genius talent discovery, cinematic golden lighting, no text", title: "發現與提升天賦", desc: "精準量化孩子隱藏的天賦區域，大幅提升其專注力與學習效能。" },
-                { prompt: "A beautiful 3D blueprint of a human soul, glowing DNA and core destiny energy, highly detailed, no text", title: "解碼人生原來的設計", desc: "解讀靈魂藍圖，讓你在紛亂的世界中找回核心使命與發展方向。" },
-                { prompt: "3D visualization of diverse employees perfectly fitting into a glowing corporate matrix, synergy and match concept, no text", title: "員工潛能極大化", desc: "透過腦波頻率協助企業主人崗匹配，發揮團隊最強大的戰鬥力。" },
-                { prompt: "Abstract 3D graph showing massive upward sales arrows made of glowing neural waves, product success concept, no text", title: "銷售業績倍增", desc: "透過腦波配對優化產品銷售策略與客戶體驗，讓業績呈指數增長。" }
+                { image: "/images/staring-at-galaxy.png", title: "發現與提升天賦", desc: "精準量化孩子隱藏的天賦區域，大幅提升其專注力與學習效能。" },
+                { image: "/images/golden-key.png", title: "解碼人生原來的設計", desc: "解讀靈魂藍圖，讓你在紛亂的世界中找回核心使命與發展方向。" },
+                { image: "/images/corporate-office-dashboard.png", title: "員工潛能極大化", desc: "透過腦波頻率協助企業主人崗匹配，發揮團隊最強大的戰鬥力。" },
+                { image: "/images/dashboard-showing.png", title: "銷售業績倍增", desc: "透過腦波配對優化產品銷售策略與客戶體驗，讓業績呈指數增長。" }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-8 items-center bg-blue-600/10 p-6 rounded-[32px] border border-blue-500/20 group hover:scale-105 transition-all">
-                  <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="1:1" className="w-32 h-32 rounded-2xl shadow-lg shadow-blue-500/20" />
+                  <img src={item.image} alt={item.title} className="w-32 h-32 object-cover rounded-2xl shadow-lg shadow-blue-500/20" loading="lazy" />
                   <div>
                     <h5 className="text-blue-400 font-black text-xl mb-2">{item.title}</h5>
                     <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>
@@ -257,12 +241,7 @@ const App: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="glass p-12 rounded-[64px] border border-white/10 bg-[#0f172a]/40 shadow-2xl">
                 <div className="mb-12">
-                   <AIVisual 
-                     prompt={`Hyper-realistic 3D isometric render of ${activeWave} neural energy flow in a glass laboratory environment, sophisticated 3D light paths, Octane Render style, high detail, no text`} 
-                     alt={activeWave} 
-                     className="mb-10"
-                   />
-                   <Visualizer activeWave={activeWave} isActive={true} />
+<Visualizer activeWave={activeWave} isActive={true} />
                 </div>
                 
                 <div className="p-10 rounded-[40px] bg-slate-900/80 border border-white/5">
@@ -302,12 +281,7 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
-            <AIVisual 
-              prompt="High-end 3D visualization of a futuristic city connected by glowing neural networks, collaboration and interconnected industry nodes, cinematic 3D lighting" 
-              alt="Industry Collaboration"
-              aspectRatio="1:1"
-              className="rounded-[56px] shadow-blue-500/20 shadow-2xl"
-            />
+            <img src="/images/city-connected.png" alt="Industry Collaboration" className="rounded-[56px] shadow-blue-500/20 shadow-2xl w-full aspect-square object-cover" loading="lazy" />
           </div>
         </div>
       </section>
@@ -319,15 +293,15 @@ const App: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { prompt: 'Mystical golden key unlocking a cosmic brain door, life script concept, no text', title: '解密人生劇本', sub: '探索潛意識，重寫命運軌跡' },
-              { prompt: 'Two spirits connected by radiant neural waves, cosmic love energy, no text', title: '情侶靈性解密', sub: '深化情感連結，消除靈性隔閡' },
-              { prompt: 'Corporate office dashboard with glowing brain energy graphs, efficiency concept, no text', title: '企業效率健檢', sub: '量化團隊抗壓性，打造高產出組織' },
-              { prompt: 'Exquisite 3D render of a child staring at a galaxy inside a glowing brain, discovery and genius concept, highly detailed 3D animation style, no text', title: '兒童天賦解碼', sub: '發掘優勢智能，找回學習掌控權' },
-              { prompt: 'Artistic 3D visualization of two translucent silhouettes (parent and child) with synchronized glowing heart-to-brain waves, warm amber and blue lighting, 3D fluid particles, no text', title: '親子關係共振', sub: '改善溝通頻率，增進情感連貫性' },
-              { prompt: 'Two glowing hearts misaligned neural synchronization art, relationship therapy concept, no text', title: '夫妻錯頻分析', sub: '協調情感波段，建立和諧生活' }
+              { image: '/images/golden-key.png', title: '解密人生劇本', sub: '探索潛意識，重寫命運軌跡' },
+              { image: '/images/two-spirits-connected.png', title: '情侶靈性解密', sub: '深化情感連結，消除靈性隔閡' },
+              { image: '/images/corporate-office-dashboard.png', title: '企業效率健檢', sub: '量化團隊抗壓性，打造高產出組織' },
+              { image: '/images/staring-at-galaxy.png', title: '兒童天賦解碼', sub: '發掘優勢智能，找回學習掌控權' },
+              { image: '/images/translucent-silhouettes.png', title: '親子關係共振', sub: '改善溝通頻率，增進情感連貫性' },
+              { image: '/images/two-glowing-hearts.png', title: '夫妻錯頻分析', sub: '協調情感波段，建立和諧生活' }
             ].map((item, i) => (
               <div key={i} className="group glass p-4 rounded-[56px] border border-white/5 hover:-translate-y-4 transition-all duration-700 text-center flex flex-col">
-                <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="1:1" className="mb-10 rounded-[40px]" />
+                <img src={item.image} alt={item.title} className="mb-10 rounded-[40px] w-full aspect-square object-cover" loading="lazy" />
                 <div className="p-8 pt-0 flex-1">
                   <h4 className="text-3xl font-black mb-4 group-hover:text-blue-400 transition-colors">{item.title}</h4>
                   <p className="text-slate-500 font-medium text-lg leading-tight">{item.sub}</p>
