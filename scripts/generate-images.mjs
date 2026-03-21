@@ -180,6 +180,31 @@ const IMAGES = [
     prompt:
       "High-end 3D panoramic visualization of a luminous futuristic megacity with interconnected neural network highways spanning education, healthcare, human resources, and wellness industry nodes, collaborative glowing data streams linking diverse sectors, cinematic wide-angle 3D lighting",
   },
+  // ── Milestones ─────────────────────────────────────────────────────────────
+  {
+    id: "milestone-1968",
+    aspectRatio: "4:3",
+    prompt:
+      "Vintage 1960s neuroscience laboratory scene, a calm cat sitting with early EEG electrode sensors attached to its head, retro oscilloscope screens showing 12-15Hz SMR brainwave patterns, warm amber laboratory lighting, Professor Barry Sterman era scientific discovery, antique scientific instruments",
+  },
+  {
+    id: "milestone-1970s",
+    aspectRatio: "4:3",
+    prompt:
+      "1970s NASA mission control room with scientists in white lab coats monitoring neural brainwave data on vintage green-screen computers, rocket fuel toxicity neurological research experiment, SMR brainwave protection discovery, retro NASA space agency atmosphere with vintage monitoring equipment",
+  },
+  {
+    id: "milestone-1980s",
+    aspectRatio: "4:3",
+    prompt:
+      "1980s clinical neurofeedback therapy session, a doctor operating early EEG brainwave equipment treating a patient, breakthrough non-pharmaceutical epilepsy and ADHD treatment, retro medical setting with pioneering neural biofeedback technology, warm clinical environment",
+  },
+  {
+    id: "milestone-1990s",
+    aspectRatio: "4:3",
+    prompt:
+      "Modern Olympic athlete wearing neural monitoring headset in peak performance training, alongside a military veteran in PTSD neurofeedback therapy session, split visualization showing sports psychology and trauma healing through brainwave technology, NASA astronaut mental resilience training",
+  },
   // ── Services ───────────────────────────────────────────────────────────────
   {
     id: "service-1",
@@ -232,11 +257,13 @@ async function generateImage(id, prompt, aspectRatio) {
   console.log(`⏳ Generating: ${id}.png ...`);
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-preview-04-17",
+      model: "gemini-2.5-flash-image",
       contents: {
         parts: [{ text: STYLE_PREFIX + prompt + STYLE_SUFFIX }],
       },
-      config: { responseModalities: ["IMAGE", "TEXT"], imageConfig: { aspectRatio } },
+      config: {
+        imageConfig: { aspectRatio },
+      },
     });
 
     for (const part of response.candidates[0].content.parts) {

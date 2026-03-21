@@ -164,17 +164,17 @@ const App: React.FC = () => {
           <SectionTitle title="神經科學里程碑" subtitle="Evolution of Neuro-Detection" light />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { year: "1968", title: "貓的 SMR 實驗", desc: "Barry Sterman 教授發現貓可透過訓練產生 12-15Hz (SMR) 波，顯著提升神經系統穩定性。" },
-              { year: "1970s", title: "NASA MMH 劑量實驗", desc: "NASA 委託 Sterman 測試火箭燃料 MMH 毒性，發現受過 SMR 訓練的貓具備強大的抗驚厥能力，開啟了神經反饋的黃金時代。" },
-              { year: "1980s", title: "癲癇與 ADHD 轉變", desc: "此技術正式跨入臨床，成為控制癲癇、改善注意力缺失 (ADHD) 的非藥物首選療法。" },
-              { year: "1990s-Now", title: "PTSD 與巔峰表現", desc: "廣泛應用於創傷後壓力症候群 (PTSD) 治療與 NASA 太空人、奧運選手的心理韌性訓練。" }
+              { year: "1968", title: "貓的 SMR 實驗", desc: "Barry Sterman 教授發現貓可透過訓練產生 12-15Hz (SMR) 波，顯著提升神經系統穩定性。", staticSrc: "/images/milestone-1968.png" },
+              { year: "1970s", title: "NASA MMH 劑量實驗", desc: "NASA 委託 Sterman 測試火箭燃料 MMH 毒性，發現受過 SMR 訓練的貓具備強大的抗驚厥能力，開啟了神經反饋的黃金時代。", staticSrc: "/images/milestone-1970s.png" },
+              { year: "1980s", title: "癲癇與 ADHD 轉變", desc: "此技術正式跨入臨床，成為控制癲癇、改善注意力缺失 (ADHD) 的非藥物首選療法。", staticSrc: "/images/milestone-1980s.png" },
+              { year: "1990s-Now", title: "PTSD 與巔峰表現", desc: "廣泛應用於創傷後壓力症候群 (PTSD) 治療與 NASA 太空人、奧運選手的心理韌性訓練。", staticSrc: "/images/milestone-1990s.png" }
             ].map((milestone, idx) => (
-              <div key={idx} className="p-8 glass rounded-[40px] border border-white/5 relative group">
-                <div className="text-blue-500 font-black text-4xl mb-4 group-hover:scale-110 transition-transform">{milestone.year}</div>
-                <h4 className="text-white font-black text-xl mb-4">{milestone.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed">{milestone.desc}</p>
-                <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                  <i className="fas fa-history text-4xl"></i>
+              <div key={idx} className="glass rounded-[40px] border border-white/5 relative group overflow-hidden hover:border-blue-500/30 transition-all duration-500">
+                <AIVisual staticSrc={milestone.staticSrc} alt={milestone.title} aspectRatio="4:3" className="rounded-none rounded-t-[40px] border-none" />
+                <div className="p-8">
+                  <div className="text-blue-500 font-black text-4xl mb-3 group-hover:scale-110 transition-transform inline-block">{milestone.year}</div>
+                  <h4 className="text-white font-black text-xl mb-3">{milestone.title}</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">{milestone.desc}</p>
                 </div>
               </div>
             ))}
