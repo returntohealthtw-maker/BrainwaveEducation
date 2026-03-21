@@ -7,6 +7,14 @@ import AIVisual from './components/AIVisual';
 import { BRAINWAVE_MAP } from './constants';
 import { BrainwaveType } from './types';
 
+const WAVE_IMAGES: Record<string, string> = {
+  Theta: '/images/brainwave-Theta.png',
+  Alpha: '/images/brainwave-Alpha.png',
+  SMR:   '/images/brainwave-SMR.png',
+  Beta:  '/images/brainwave-Beta.png',
+  Gamma: '/images/brainwave-Gamma.png',
+};
+
 const App: React.FC = () => {
   const [activeWave, setActiveWave] = useState<BrainwaveType>('Alpha');
 
@@ -32,8 +40,8 @@ const App: React.FC = () => {
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0 opacity-40">
-          <AIVisual 
-            prompt="Vast cosmic deep-space panorama filled with luminous fluid neural wave streams in electric blue and indigo, brainwave energy pulses radiating outward from a glowing core, hyper-cinematic light beams cutting through the void, futuristic high-tech neuroscience backdrop" 
+          <AIVisual
+            staticSrc="/images/hero.png"
             alt="Hero Background"
             className="w-full h-full rounded-none border-none scale-110 blur-[1px]"
           />
@@ -71,15 +79,15 @@ const App: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { prompt: '3D render of a single human head split into two contrasting halves, left side glowing bright blue conscious mind and right side deep purple subconscious, conflicting neural brainwave frequencies colliding at the center seam, self-doubt and inner conflict visualization, cinematic lighting', title: '自我矛盾', desc: '內在意識與潛意識頻率不一，導致行動力與願景脫鉤，陷入持續的自我懷疑。' },
-              { prompt: '3D visualization of two glowing human silhouettes standing back-to-back, chaotic red and blue brainwave frequencies clashing violently between them creating static noise interference, relationship incompatibility and communication breakdown, neural wave dissonance', title: '關係對立', desc: '與伴侶或夥伴的腦波無法「共振」，形成追逃循環，交流淪為無效的雜訊。' },
-              { prompt: '3D human brain with overactive amygdala glowing red-hot at the center, explosive chaotic red Beta brainwaves radiating outward like a supernova, neural overload storm, stress system maxed out, anxiety and emotional breakdown visualization, dramatic cinematic lighting', title: '情緒失控', desc: '杏仁核過度活躍，Beta 波失控暴衝，壓力系統無法關閉，引發焦慮或崩潰。' },
-              { prompt: '3D cinematic render of a lone human figure standing at a dark foggy crossroads with multiple dimly lit diverging neon paths vanishing into the mist, brain prefrontal cortex showing faint weak Alpha waves, blurred horizon with no clear destination, lost direction and purposelessness', title: '前途茫茫', desc: '看不清未來方向，大腦決策區 Alpha 波過低，導致目標感喪失與長期迷航。' },
-              { prompt: '3D corporate neural network visualization of mismatched glowing employee silhouettes placed in wrong-shaped role slots, people in incorrect positions, organizational frequency mismatch and talent waste, puzzle pieces that do not fit, HR misalignment concept', title: '用人不當', desc: '企業主與員工頻率錯位，無法將對的人放在對的位置，造成人才損耗與內耗。' },
-              { prompt: '3D digital art of a severed glowing business neural network, fragmented energy pathways between merchant and client silhouettes breaking apart, broken trust signal loss and disconnected commerce energy field, digital glitch fragmentation effect, lost transactions visualization', title: '客戶斷連', desc: '商業能量無法共鳴，無法精準觸達客戶潛意識需求，導致訂單流失與信任崩解。' }
+              { staticSrc: '/images/problem-1.png', title: '自我矛盾', desc: '內在意識與潛意識頻率不一，導致行動力與願景脫鉤，陷入持續的自我懷疑。' },
+              { staticSrc: '/images/problem-2.png', title: '關係對立', desc: '與伴侶或夥伴的腦波無法「共振」，形成追逃循環，交流淪為無效的雜訊。' },
+              { staticSrc: '/images/problem-3.png', title: '情緒失控', desc: '杏仁核過度活躍，Beta 波失控暴衝，壓力系統無法關閉，引發焦慮或崩潰。' },
+              { staticSrc: '/images/problem-4.png', title: '前途茫茫', desc: '看不清未來方向，大腦決策區 Alpha 波過低，導致目標感喪失與長期迷航。' },
+              { staticSrc: '/images/problem-5.png', title: '用人不當', desc: '企業主與員工頻率錯位，無法將對的人放在對的位置，造成人才損耗與內耗。' },
+              { staticSrc: '/images/problem-6.png', title: '客戶斷連', desc: '商業能量無法共鳴，無法精準觸達客戶潛意識需求，導致訂單流失與信任崩解。' }
             ].map((item, i) => (
               <div key={i} className="group glass p-2 rounded-[48px] border border-white/5 hover:border-blue-500/30 transition-all duration-700">
-                <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="4:3" className="mb-8" />
+                <AIVisual staticSrc={item.staticSrc} alt={item.title} aspectRatio="4:3" className="mb-8" />
                 <div className="p-8 pt-0">
                   <h4 className="text-3xl font-black mb-4 group-hover:text-blue-400 transition-colors">{item.title}</h4>
                   <p className="text-slate-400 leading-relaxed text-lg font-light">{item.desc}</p>
@@ -99,7 +107,7 @@ const App: React.FC = () => {
             {/* Step 1: Acquisition */}
             <div className="group glass p-8 rounded-[48px] border border-blue-500/20 flex flex-col items-center text-center">
               <AIVisual 
-                prompt="Ultra high-tech QEEG medical headset with precision electrode sensors placed on a human forehead, real-time blue electrical brainwave biosignals streaming from scalp through glowing data cables into digital visualization, nanosecond-accurate neural signal capture, medical grade precision" 
+                staticSrc="/images/tech-1.png"
                 alt="Signal Acquisition" 
                 aspectRatio="1:1"
                 className="mb-8 w-full rounded-[40px]"
@@ -117,7 +125,7 @@ const App: React.FC = () => {
                 <i className="fas fa-chevron-right text-blue-500/30 text-4xl animate-pulse"></i>
               </div>
               <AIVisual 
-                prompt="3D visualization of Fast Fourier Transform FFT algorithm processing raw neural signal streams, glowing mathematical gears and neural nodes filtering noise particles through a patent subconscious decoding engine, bandwidth ratio computation, deep violet and cyan digital processing core" 
+                staticSrc="/images/tech-2.png"
                 alt="Proprietary Processing" 
                 aspectRatio="1:1"
                 className="mb-8 w-full rounded-[40px]"
@@ -135,7 +143,7 @@ const App: React.FC = () => {
                 <i className="fas fa-chevron-right text-purple-500/30 text-4xl animate-pulse"></i>
               </div>
               <AIVisual 
-                prompt="Futuristic holographic full-person brain dashboard with 3D radar charts quantifying focus level, stress index, and emotional stability scores, translucent human body overlay showing cognitive performance metrics, comprehensive neuroscience analytics visualization, glowing emerald green UI panels" 
+                staticSrc="/images/tech-3.png"
                 alt="Analysis Results" 
                 aspectRatio="1:1"
                 className="mb-8 w-full rounded-[40px]"
@@ -186,12 +194,12 @@ const App: React.FC = () => {
                 <i className="fas fa-globe-americas"></i> 當前世界的腦波檢測
               </h4>
               {[
-                { prompt: "Cold sterile hospital room with outdated EEG monitoring machines and clinical electrodes, restricted medical environment accessible only to the seriously ill, harsh fluorescent lighting, old-fashioned medical brain scanning limited to epilepsy and sleep disorder diagnosis", title: "侷限於醫院臨床", desc: "大多僅用於診斷睡眠障礙、癲癇或阿茲海默症，門檻極高。" },
-                { prompt: "Academic research desk buried under an overwhelming pile of complex scientific papers, incomprehensible 2D statistical charts and dry laboratory data graphs on screens, ivory tower science disconnected from everyday life, inaccessible academic brainwave reports", title: "學術化的生澀報告", desc: "數據深奧難懂，僅用於科研或藥物測試，無法對接日常生活應用。" },
-                { prompt: "Towering wall of gold coins and expensive price tags blocking access to a brain scanning machine in the background, financial barrier gatekeeping neuroscience from ordinary people, unaffordable and inaccessible high-cost brain technology", title: "昂貴且高不可攀", desc: "高昂的檢測費用與專業需求，讓一般大眾難以接觸腦科學的益處。" }
+                { staticSrc: "/images/world-1.png", title: "侷限於醫院臨床", desc: "大多僅用於診斷睡眠障礙、癲癇或阿茲海默症，門檻極高。" },
+                { staticSrc: "/images/world-2.png", title: "學術化的生澀報告", desc: "數據深奧難懂，僅用於科研或藥物測試，無法對接日常生活應用。" },
+                { staticSrc: "/images/world-3.png", title: "昂貴且高不可攀", desc: "高昂的檢測費用與專業需求，讓一般大眾難以接觸腦科學的益處。" }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-8 items-center glass p-6 rounded-[32px] border border-white/5 group hover:bg-white/5 transition-all">
-                  <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="1:1" className="w-32 h-32 rounded-2xl grayscale group-hover:grayscale-0 transition-all" />
+                  <AIVisual staticSrc={item.staticSrc} alt={item.title} aspectRatio="1:1" className="w-32 h-32 rounded-2xl grayscale group-hover:grayscale-0 transition-all" />
                   <div>
                     <h5 className="text-white font-black text-lg mb-2">{item.title}</h5>
                     <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
@@ -206,13 +214,13 @@ const App: React.FC = () => {
                 <i className="fas fa-bolt"></i> 而我們可以為你做到什麼
               </h4>
               {[
-                { prompt: "Glowing 3D child silhouette with brilliant talent zones lighting up inside their brain in golden and cyan light, sparkles of hidden potential energy bursting outward, focus and learning excellence activation, genius talent discovery, cinematic warm golden lighting", title: "發現與提升天賦", desc: "精準量化孩子隱藏的天賦區域，大幅提升其專注力與學習效能。" },
-                { prompt: "Luminous 3D blueprint of a human soul floating in cosmic space, glowing DNA helix intertwined with a radiant core destiny energy map, life mission pathway decoded and revealed, soul design visualization, finding core purpose amid chaos", title: "解碼人生原來的設計", desc: "解讀靈魂藍圖，讓你在紛亂的世界中找回核心使命與發展方向。" },
-                { prompt: "3D corporate neural matching visualization showing diverse glowing employee silhouettes fitting perfectly into their optimal role positions in a luminous team matrix, brainwave frequency alignment unlocking maximum team synergy and combat effectiveness", title: "員工潛能極大化", desc: "透過腦波頻率協助企業主人崗匹配，發揮團隊最強大的戰鬥力。" },
-                { prompt: "Dynamic 3D business graph with exponentially rising neural-powered sales arrows made of glowing brainwave energy, client resonance optimization driving exponential revenue growth, product strategy aligned with customer subconscious desires", title: "銷售業績倍增", desc: "透過腦波配對優化產品銷售策略與客戶體驗，讓業績呈指數增長。" }
+                { staticSrc: "/images/power-1.png", title: "發現與提升天賦", desc: "精準量化孩子隱藏的天賦區域，大幅提升其專注力與學習效能。" },
+                { staticSrc: "/images/power-2.png", title: "解碼人生原來的設計", desc: "解讀靈魂藍圖，讓你在紛亂的世界中找回核心使命與發展方向。" },
+                { staticSrc: "/images/power-3.png", title: "員工潛能極大化", desc: "透過腦波頻率協助企業主人崗匹配，發揮團隊最強大的戰鬥力。" },
+                { staticSrc: "/images/power-4.png", title: "銷售業績倍增", desc: "透過腦波配對優化產品銷售策略與客戶體驗，讓業績呈指數增長。" }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-8 items-center bg-blue-600/10 p-6 rounded-[32px] border border-blue-500/20 group hover:scale-105 transition-all">
-                  <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="1:1" className="w-32 h-32 rounded-2xl shadow-lg shadow-blue-500/20" />
+                  <AIVisual staticSrc={item.staticSrc} alt={item.title} aspectRatio="1:1" className="w-32 h-32 rounded-2xl shadow-lg shadow-blue-500/20" />
                   <div>
                     <h5 className="text-blue-400 font-black text-xl mb-2">{item.title}</h5>
                     <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>
@@ -257,9 +265,9 @@ const App: React.FC = () => {
             <div className="lg:col-span-7">
               <div className="glass p-12 rounded-[64px] border border-white/10 bg-[#0f172a]/40 shadow-2xl">
                 <div className="mb-12">
-                   <AIVisual 
-                     prompt={`Hyper-realistic 3D isometric render of ${activeWave} brainwave neural energy flowing through a glass laboratory environment, precise frequency-specific light waveforms at ${activeWave === 'Theta' ? '4-8Hz deep subconscious slow waves' : activeWave === 'Alpha' ? '8-12Hz calm relaxation waves' : activeWave === 'SMR' ? '12-15Hz focused high-efficiency waves' : activeWave === 'Beta' ? '15-30Hz intense active thinking waves' : '30-45Hz peak performance gamma burst waves'}, Octane Render cinematic style`} 
-                     alt={activeWave} 
+                   <AIVisual
+                     staticSrc={WAVE_IMAGES[activeWave]}
+                     alt={activeWave}
                      className="mb-10"
                    />
                    <Visualizer activeWave={activeWave} isActive={true} />
@@ -302,8 +310,8 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
-            <AIVisual 
-              prompt="High-end 3D panoramic visualization of a luminous futuristic megacity with interconnected neural network highways spanning education, healthcare, human resources, and wellness industry nodes, collaborative glowing data streams linking diverse sectors, cinematic wide-angle 3D lighting" 
+            <AIVisual
+              staticSrc="/images/industry.png"
               alt="Industry Collaboration"
               aspectRatio="1:1"
               className="rounded-[56px] shadow-blue-500/20 shadow-2xl"
@@ -319,15 +327,15 @@ const App: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { prompt: 'A cosmic golden key unlocking a glowing cosmic brain vault revealing a hidden life script and destiny blueprint inside, mystical subconscious exploration, rewriting fate and life trajectory, 3D cinematic key-to-brain unlock moment', title: '解密人生劇本', sub: '探索潛意識，重寫命運軌跡' },
-              { prompt: '3D render of two luminous spirit silhouettes facing each other with perfectly synchronized brainwave frequencies creating a radiant love bridge of flowing neural energy between their hearts and minds, couple spiritual connection and emotional resonance, eliminating spiritual barriers', title: '情侶靈性解密', sub: '深化情感連結，消除靈性隔閡' },
-              { prompt: '3D corporate brain efficiency health check dashboard with glowing organizational stress resistance metrics, team cognitive performance graphs, quantified output scores and mental resilience indicators for a high-performance organization', title: '企業效率健檢', sub: '量化團隊抗壓性，打造高產出組織' },
-              { prompt: 'Breathtaking 3D render of a glowing child in awe gazing at a personal galaxy of talents and superior intelligences shining brilliantly inside a luminous brain, multiple intelligence zones lighting up, reclaiming learning mastery and self-confidence', title: '兒童天賦解碼', sub: '發掘優勢智能，找回學習掌控權' },
-              { prompt: 'Warm 3D visualization of a parent and child translucent silhouettes side by side with perfectly synchronized amber and blue brain-to-heart wave resonance flowing between them, improved communication frequency and emotional coherence, harmonious family neural bonding', title: '親子關係共振', sub: '改善溝通頻率，增進情感連貫性' },
-              { prompt: '3D art of two glowing hearts representing husband and wife with visibly misaligned neural frequency waves creating interference patterns between them, couples brainwave desynchronization analysis and the pathway to restored harmonic life together', title: '夫妻錯頻分析', sub: '協調情感波段，建立和諧生活' }
+              { staticSrc: '/images/service-1.png', title: '解密人生劇本', sub: '探索潛意識，重寫命運軌跡' },
+              { staticSrc: '/images/service-2.png', title: '情侶靈性解密', sub: '深化情感連結，消除靈性隔閡' },
+              { staticSrc: '/images/service-3.png', title: '企業效率健檢', sub: '量化團隊抗壓性，打造高產出組織' },
+              { staticSrc: '/images/service-4.png', title: '兒童天賦解碼', sub: '發掘優勢智能，找回學習掌控權' },
+              { staticSrc: '/images/service-5.png', title: '親子關係共振', sub: '改善溝通頻率，增進情感連貫性' },
+              { staticSrc: '/images/service-6.png', title: '夫妻錯頻分析', sub: '協調情感波段，建立和諧生活' }
             ].map((item, i) => (
               <div key={i} className="group glass p-4 rounded-[56px] border border-white/5 hover:-translate-y-4 transition-all duration-700 text-center flex flex-col">
-                <AIVisual prompt={item.prompt} alt={item.title} aspectRatio="1:1" className="mb-10 rounded-[40px]" />
+                <AIVisual staticSrc={item.staticSrc} alt={item.title} aspectRatio="1:1" className="mb-10 rounded-[40px]" />
                 <div className="p-8 pt-0 flex-1">
                   <h4 className="text-3xl font-black mb-4 group-hover:text-blue-400 transition-colors">{item.title}</h4>
                   <p className="text-slate-500 font-medium text-lg leading-tight">{item.sub}</p>

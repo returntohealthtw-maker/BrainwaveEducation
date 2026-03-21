@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Keep generated static images
+!public/images/*.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

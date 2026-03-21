@@ -3,17 +3,25 @@ import React, { useState, useEffect } from 'react';
 import { generateNeuroImage } from '../services/imageService';
 
 interface AIVisualProps {
-  prompt: string;
+  staticSrc?: string;
+  prompt?: string;
   alt: string;
   className?: string;
   aspectRatio?: "16:9" | "1:1" | "4:3";
 }
 
-const AIVisual: React.FC<AIVisualProps> = ({ prompt, alt, className = "", aspectRatio = "16:9" }) => {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+const AIVisual: React.FC<AIVisualProps> = ({ staticSrc, prompt, alt, className = "", aspectRatio = "16:9" }) => {
+  const [imageUrl, setImageUrl] = useState<string | null>(staticSrc || null);
+  const [loading, setLoading] = useState(!staticSrc);
 
   useEffect(() => {
+    if (staticSrc) {
+      setImageUrl(staticSrc);
+      setLoading(false);
+      return;
+    }
+    if (!prompt) return;
+
     let isMounted = true;
     const fetchImage = async () => {
       setLoading(true);
@@ -25,7 +33,7 @@ const AIVisual: React.FC<AIVisualProps> = ({ prompt, alt, className = "", aspect
     };
     fetchImage();
     return () => { isMounted = false; };
-  }, [prompt]);
+  }, [prompt, staticSrc]);
 
   const aspectClass = {
     "16:9": "aspect-video",
@@ -43,9 +51,9 @@ const AIVisual: React.FC<AIVisualProps> = ({ prompt, alt, className = "", aspect
           </span>
         </div>
       ) : (
-        <img 
-          src={imageUrl || ""} 
-          alt={alt} 
+        <img
+          src={imageUrl || ""}
+          alt={alt}
           className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
           onLoad={(e) => (e.currentTarget.style.opacity = "1")}
           style={{ opacity: 0, transition: 'opacity 1s ease-in-out' }}
