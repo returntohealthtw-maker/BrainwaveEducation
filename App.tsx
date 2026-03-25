@@ -26,7 +26,7 @@ const App: React.FC = () => {
   );
 
   const handleReservation = () => {
-    window.open("https://lin.ee/kXy9eHb", "_blank");
+    window.open("https://lin.ee/lJ5dgyx", "_blank");
   };
 
   const handleInquiry = () => {
